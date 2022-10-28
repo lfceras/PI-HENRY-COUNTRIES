@@ -1,0 +1,30 @@
+{
+    "id": "COL",
+    "name": "Colombia",
+    "flag": "https://flagcdn.com/w320/co.png",
+    "continents": "South America",
+    "capital": "Bogotá",
+    "subregion": "South America",
+    "population": 50882884,
+    "area": 1141748,
+    "create": true,
+    "Activities": [
+      {
+        "id": 2,
+        "name": "rapel",
+        "dificulty": 4,
+        "duration": 12,
+        "season": "winter",
+        "create": true
+      },
+      {
+        "id": 3,
+        "name": "futbol",
+        "dificulty": 4,
+        "duration": 12,
+        "season": "winter",
+        "create": true
+      }
+    ]
+  }
+]

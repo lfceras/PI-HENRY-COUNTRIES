@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import styles from './landingPage.module.css'
 
 const LandingPage = () => {
   return (
-    <div>
+    <div className={styles.principal}>
       <Link to={'/home'}>
         <button>Ingresar</button>
       </Link>

@@ -12,8 +12,7 @@ function App() {
       <Route exact path={'/'} component={LandingPage} />
       <Route exact path={'/home'} component={Home} />
       <Route exact path={'/country/:id'} component={CountryDetail} />
-
-      
+    
     </div>
   );
 }

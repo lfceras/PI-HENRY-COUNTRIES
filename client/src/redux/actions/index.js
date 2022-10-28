@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_ALL_COUNTRIES, GET_COUNTRIES_BY_NAME, GET_COUNTRY_ID } from '../actionTypes'
+import { CLEAN_DETAILS, GET_ALL_COUNTRIES, GET_COUNTRIES_BY_NAME, GET_COUNTRY_ID } from '../actionTypes'
 
 
 export const getAllCountries = ()=>{
@@ -27,7 +27,13 @@ export const getDetailCountry = (id)=>{
     const res = await axios.get(`http://localhost:3001/countries/${id}`)
     dispatch({
       type: GET_COUNTRY_ID,
-      payload: res.data
+      payload: res.data[0]
     })
+  }
+}
+
+export const cleanDetails = ()=>{
+  return{
+    type: CLEAN_DETAILS
   }
 }

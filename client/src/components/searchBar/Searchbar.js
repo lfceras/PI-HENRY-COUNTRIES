@@ -15,7 +15,6 @@ const Searchbar = () => {
     e.preventDefault()
     dispatch(getByName(countries))
     setCountries("")
-    e.stopPropagation()
   }
 
   return (
