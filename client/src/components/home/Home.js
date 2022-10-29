@@ -5,6 +5,7 @@ import {
   filterByContinent,
   getAllCountries,
   sortByName,
+  sortByPopulation,
 } from "../../redux/actions";
 import CountryCard from "../countryCard/CountryCard";
 import styles from "./home.module.css";
@@ -13,11 +14,16 @@ import Searchbar from "../searchBar/Searchbar";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const countries = useSelector((state) => state.countries);
+  const countries = useSelector((state) => state.allcountries);
   const [orden, setOrden] = useState("");
+
+
   const [currentPage, setCurrentPage] = useState(1);
   // eslint-disable-next-line no-unused-vars
-  const [countriesPerPage, setCountriesPerPage] = useState(10);
+  let [countriesPerPage, setCountriesPerPage] = useState(10);
+  // if(currentPage === 1){
+  //   countriesPerPage = 9
+  // }
   const indexOfLastCountry = currentPage * countriesPerPage;
   const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
   const currentCountries = countries.slice(
@@ -39,7 +45,12 @@ const Home = () => {
 
   const handleSorted = (e) => {
     dispatch(sortByName(e.target.value));
-    setCurrentPage(1);
+    // setCurrentPage(1);
+    setOrden(`Ordenado ${e.target.value}`);
+  };
+
+  const handleSortedPopulation = (e) => {
+    dispatch(sortByPopulation(e.target.value));
     setOrden(`Ordenado ${e.target.value}`);
   };
 
@@ -52,6 +63,9 @@ const Home = () => {
       <Searchbar />
       <Link to={"/"}>
         <button>Inicio</button>
+      </Link>
+      <Link to={"/create"}>
+        <button>Crear Actividad</button>
       </Link>
       <button onClick={(e) => recargarPaises(e)}>Recargar Paises</button>
       <Paginado
@@ -84,14 +98,14 @@ const Home = () => {
         <div>
           <label>Ordenar por: </label>
           <select onChange={(e) => handleSorted(e)}>
+            <option value="All">All</option>
             <option value="asc">ASC</option>
             <option value="desc">DESC</option>
           </select>
         </div>
-
         <div>
           <label>Ordenar por poblacion: </label>
-          <select>
+          <select onChange={(e) => handleSortedPopulation(e)}>
             <option value="mayor">Mayor</option>
             <option value="menor">Menor</option>
           </select>
@@ -106,6 +120,7 @@ const Home = () => {
               flag={el.flag}
               name={el.name}
               continents={el.continents}
+              population={el.population}
             />
           );
         })}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { getByName } from '../../redux/actions'
+import styles from './searchBar.module.css'
 
 const Searchbar = () => {
 
@@ -19,6 +20,7 @@ const Searchbar = () => {
 
   return (
     <div>
+      <div className={styles.barraBusqueda}>
       <label >
       <input 
       type="text" 
@@ -29,6 +31,7 @@ const Searchbar = () => {
       />
       <button onClick={(e)=> handleSubmit(e)}>Buscar Pais</button>
       </label>
+      </div>
     </div>
   )
 }

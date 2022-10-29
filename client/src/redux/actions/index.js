@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { CLEAN_DETAILS, GET_ALL_COUNTRIES, GET_COUNTRIES_BY_NAME, GET_COUNTRY_ID } from '../actionTypes'
+import { CLEAN_DETAILS, FILTER_BY_CONTINENT, GET_ALL_COUNTRIES, GET_COUNTRIES_BY_NAME, GET_COUNTRY_ID, SORT_BY_NAME, SORT_BY_POPULATION } from '../actionTypes'
 
 
 export const getAllCountries = ()=>{
@@ -29,6 +29,27 @@ export const getDetailCountry = (id)=>{
       type: GET_COUNTRY_ID,
       payload: res.data[0]
     })
+  }
+}
+
+export const filterByContinent = (payload)=>{
+  return{
+    type: FILTER_BY_CONTINENT,
+    payload
+  }
+}
+
+export const sortByName = (payload)=>{
+  return{
+    type: SORT_BY_NAME,
+    payload
+  }
+}
+
+export const sortByPopulation = (payload)=>{
+  return{
+    type: SORT_BY_POPULATION,
+    payload
   }
 }
 

@@ -1,30 +1,90 @@
-{
-    "id": "COL",
-    "name": "Colombia",
-    "flag": "https://flagcdn.com/w320/co.png",
-    "continents": "South America",
-    "capital": "Bogotá",
-    "subregion": "South America",
-    "population": 50882884,
-    "area": 1141748,
-    "create": true,
-    "Activities": [
-      {
-        "id": 2,
-        "name": "rapel",
-        "dificulty": 4,
-        "duration": 12,
-        "season": "winter",
-        "create": true
-      },
-      {
-        "id": 3,
-        "name": "futbol",
-        "dificulty": 4,
-        "duration": 12,
-        "season": "winter",
-        "create": true
+if(actyon.payload === 'asc' ){
+            return {
+                ...state,
+                allCountries:[...state.allCountries].sort(function (a, b) {
+                    if (a.name > b.name) {
+                        return 1;
+                    }
+                    if (b.name > a.name) {
+                        return -1;
+                    }
+                    return 0;
+                })
+            }
+                
+            }
+
+
+if(actyon.payload==="desc"){
+                    return {
+                        ...state,
+                        allCountries:[...state.allCountries].sort(function (a, b) {
+                            if (a.name > b.name) {
+                                return -1;
+                            }
+                            if (b.name > a.name) {
+                                return 1;
+                            }
+                            return 0;
+                        })
+                    }
+                        
+                    }
+
+
+   if(actyon.payload === "All"){
+                        return{
+                            ...state,
+                            allCountries:state.countries
+                        }
+                    }else{
+                        return{
+                            ...state,
+                            allCountries:state.countries
+                        }
+                    }
+
+
+
+         case SORT_BY_NAME:
+      if (actions.payload === "asc") {
+        return {
+          ...state,
+          allcountries: [...state.allcountries].sort(function (a, b) {
+            if (a.name > b.name) {
+              return 1;
+            }
+            if (b.name > a.name) {
+              return -1;
+            }
+            return 0;
+          }),
+        };
       }
-    ]
-  }
-]
+
+      if (actions.payload === "desc") {
+        return {
+          ...state,
+          allcountries: [...state.allcountries].sort(function (a, b) {
+            if (a.name > b.name) {
+              return -1;
+            }
+            if (b.name > a.name) {
+              return 1;
+            }
+            return 0;
+          }),
+        };
+      }
+
+      if (actions.payload === "All") {
+        return {
+          ...state,
+          allcountries: state.countries,
+        };
+      } else {
+        return {
+          ...state,
+          allcountries: state.countries,
+        };
+      }
